@@ -42,10 +42,10 @@ library(tibble)
 library(dplyr)
 
   ##### Defining a function to transform data into tibble format
-  my_data_function2 <- function(data2) {
+  my_data_function2 <- function(data_new) {
   
   ####### Turning data into tibble format
-  my_tibble_data <- as_tibble(data2)
+  my_tibble_data <- as_tibble(data_new)
 
   ####### Performing another transformation: using slice() to select the first 10 rows of the dataset
   data_transformation2 <- slice(my_tibble_data, 1:10)
