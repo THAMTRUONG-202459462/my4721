@@ -366,6 +366,7 @@ on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http:
 generated that includes both content as well as the output of any
 embedded R code chunks within the document. You can embed an R code
 chunk like this:</p>
+<p>EXERCISE1</p>
 <pre class="r"><code>  ### Defining a function with a single argument &#39;data&#39;
   my_data_function1 &lt;- function(data1) {
   
@@ -390,6 +391,47 @@ print(built_in_dataset1)</code></pre>
 ## Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
 ## Merc 230          22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
 ## Merc 280          19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</code></pre>
+<pre class="r"><code>###### Defining a second function with a different transformation
+#### Load the tibble and dplyr packages
+library(tibble)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>  ##### Defining a function to transform data into tibble format
+  my_data_function2 &lt;- function(data_new) {
+  
+  ####### Turning data into tibble format
+  my_tibble_data &lt;- as_tibble(data_new)
+
+  ####### Performing another transformation: using slice() to select the first 10 rows of the dataset
+  data_transformation2 &lt;- slice(my_tibble_data, 1:10)
+
+  ######### Returning the transformed data
+  return(data_transformation2)
+}
+ 
+######## Working on a new built-in dataset
+built_in_dataset2&lt;- my_data_function2(mtcars)
+print(built_in_dataset2)</code></pre>
+<pre><code>## # A tibble: 10 × 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4</code></pre>
 </div>
 <div id="including-plots" class="section level2">
 <h2>Including Plots</h2>
